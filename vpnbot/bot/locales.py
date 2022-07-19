@@ -1,4 +1,9 @@
+from aiogram import Bot
+from sqlalchemy.ext.asyncio import AsyncEngine
+
 import settings
+from db.pool import AsyncExecute
+from db.queries import select_users_languages, update_user_language
 
 START = "command.start.reply"
 SETTINGS = "command.settings.reply"
@@ -58,21 +63,36 @@ __locales = {
     "ru": __russian
 }
 
-__users = settings.load_chats_languages()
+__users = {}
+
+
+async def prefetch_languages(bot: Bot) -> dict:
+    pool: AsyncEngine = bot['pool']
+
+    async with pool.connect() as connection:
+        async for row in AsyncExecute(connection, select_users_languages(), dict):
+            __users.update({row['telegram_id']: row['language_code']})
+
+    return __users
 
 
 # Short and save definition for locales dictionary
-def ll(chat_id: int, code: str) -> str:
-    if chat_id in __users:
-        return __locales[__users[chat_id]][code]
+def ll(telegram_id: int, code: str) -> str:
+    if telegram_id in __users:
+        return __locales[__users[telegram_id]][code]
     else:
         return __locales[settings.LANGUAGE][code]
 
 
 # Short definition for rewriting chats languages
-# TODO! Create database update chat query
-def lu(chat_id: int, language: str):
-    __users[chat_id] = language
+async def lu(bot: Bot, telegram_id: int, language: str):
+    __users[telegram_id] = language
+
+    pool: AsyncEngine = bot['pool']
+
+    async with pool.connect() as connection:
+        await connection.execute(update_user_language(telegram_id, language))
+        await connection.commit()
 
 
 # Short definition to validate language

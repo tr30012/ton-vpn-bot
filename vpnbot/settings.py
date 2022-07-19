@@ -42,8 +42,3 @@ def create_logger(name: str) -> logging.Logger:
     logger.setLevel(LOGLEVEL)
 
     return logger
-
-
-# TODO! Query database for user languages
-def load_chats_languages() -> dict:
-    return {}

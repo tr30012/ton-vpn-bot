@@ -3,6 +3,7 @@ import settings
 from bot.dispatcher import create_dispatcher
 from api.app import create_app
 from db.pool import setup_async_pool
+from bot.locales import prefetch_languages
 
 from aiohttp import web
 from asyncio import get_event_loop
@@ -19,6 +20,8 @@ def main():
     configure_app(dp, app, '/bot')
 
     setup_async_pool(app, bot)
+
+    loop.run_until_complete(prefetch_languages(bot))
 
     loop.create_task(dp.start_polling())
 

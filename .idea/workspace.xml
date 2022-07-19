@@ -2,8 +2,13 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="eeb813ba-269a-4fba-b777-2d954070a9f8" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vpnbot/__main__.py" beforeDir="false" afterPath="$PROJECT_DIR$/vpnbot/__main__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vpnbot/bot/handlers.py" beforeDir="false" afterPath="$PROJECT_DIR$/vpnbot/bot/handlers.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vpnbot/bot/locales.py" beforeDir="false" afterPath="$PROJECT_DIR$/vpnbot/bot/locales.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vpnbot/db/pool.py" beforeDir="false" afterPath="$PROJECT_DIR$/vpnbot/db/pool.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vpnbot/db/queries.py" beforeDir="false" afterPath="$PROJECT_DIR$/vpnbot/db/queries.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vpnbot/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/vpnbot/settings.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -131,6 +136,8 @@
       <workItem from="1658142600766" duration="70000" />
       <workItem from="1658145567193" duration="879000" />
       <workItem from="1658151729543" duration="5421000" />
+      <workItem from="1658170418330" duration="614000" />
+      <workItem from="1658187566748" duration="1851000" />
     </task>
     <servers />
   </component>
@@ -150,7 +157,7 @@
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/ton_vpn_bot$main.coverage" NAME="Run VPN bot Coverage Results" MODIFIED="1658011080030" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/ton_vpn_bot$Run_VPN_bot.coverage" NAME="Run VPN bot Coverage Results" MODIFIED="1658156603869" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/ton_vpn_bot$Run_VPN_bot.coverage" NAME="Run VPN bot Coverage Results" MODIFIED="1658189429168" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/ton_vpn_bot$settings.coverage" NAME="settings Coverage Results" MODIFIED="1658101727178" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/vpn-bot" />
     <SUITE FILE_PATH="coverage/ton_vpn_bot$pool.coverage" NAME="pool Coverage Results" MODIFIED="1658099891474" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/vpn-bot/db" />
     <SUITE FILE_PATH="coverage/ton_vpn_bot$2022_07_18_users_api_tokens.coverage" NAME="2022_07_18_users_api_tokens Coverage Results" MODIFIED="1658153712984" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/vpnbot/db/alembic/versions" />

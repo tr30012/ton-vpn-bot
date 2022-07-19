@@ -1,7 +1,8 @@
 from aiogram import Dispatcher, Bot
 from aiogram import types
 
-from bot.locales import *
+from bot.locales import lu, ll
+from bot.locales import START, SETTINGS, LANGUAGE
 from bot.keyboards import MainMenuKeyboard, SettingsMenuKeyboard, ChangeLanguageMenuKeyboard
 from db.pool import db_first_message
 from settings import create_logger
@@ -22,25 +23,6 @@ def _lazy_load(bot: Bot, dp: Dispatcher):
         await bot.send_message(message.chat.id, ll(message.chat.id, START),
                                reply_markup=MainMenuKeyboard(message.chat.id)
                                )
-
-    @dp.message_handler(commands=["locale"])
-    async def process_change_locale(message: types.Message):
-        arguments = message.get_args()
-
-        if not isinstance(arguments, str):
-            return await bot.send_message(message.chat.id, ll(message.chat.id, LOCALE_FAIL))
-
-        if len(arguments) <= 0:
-            return await bot.send_message(message.chat.id, ll(message.chat.id, LOCALE_FAIL))
-
-        language_code = arguments.split()[0]
-
-        if not vl(language_code):
-            return await bot.send_message(message.chat.id, ll(message.chat.id, LOCALE_FAIL))
-
-        lu(message.chat.id, language_code)
-
-        await bot.send_message(message.chat.id, ll(message.chat.id, LOCALE_SUCCESS))
 
     @dp.message_handler()
     async def process_echo_cmd(message: types.Message):
@@ -104,7 +86,7 @@ def _lazy_load(bot: Bot, dp: Dispatcher):
     @dp.callback_query_handler(ChangeLanguageMenuKeyboard.query_language)
     async def process_settings_callback(query: types.CallbackQuery):
         language = query.data.split('.')[-1]
-        lu(query.message.chat.id, language)
+        await lu(bot, query.message.chat.id, language)
 
         await bot.answer_callback_query(query.id)
         await bot.edit_message_text(

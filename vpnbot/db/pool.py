@@ -1,15 +1,32 @@
 import asyncio
 import settings
 
+from collections import AsyncIterable
 from aiogram import Bot, types
 from sqlalchemy import select
 from sqlalchemy.pool import QueuePool
 from aiohttp.web import Application
-from sqlalchemy.ext.asyncio import create_async_engine, AsyncEngine
+from sqlalchemy.sql import Select
+from sqlalchemy.ext.asyncio import create_async_engine, AsyncEngine, AsyncConnection
 
 from db.queries import does_user_exists_query, insert_user_query
 
 logger = settings.create_logger("database")
+
+
+class AsyncExecute(AsyncIterable):
+    __slots__ = (
+        'query', 'connection', 'cls_'
+    )
+
+    def __init__(self, connection: AsyncConnection, query: Select, cls_: type):
+        self.connection = connection
+        self.query = query
+        self.cls_ = cls_
+
+    async def __aiter__(self):
+        for row in await self.connection.execute(self.query):
+            yield self.cls_(row)
 
 
 def setup_async_pool(app: Application, bot: Bot):

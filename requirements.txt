@@ -5,3 +5,4 @@ SQLAlchemy~=1.4.39
 alembic~=1.8.1
 aiosqlite~=0.17.0
 marshmallow~=3.17.0
+aiohttp_apispec~=2.2.3

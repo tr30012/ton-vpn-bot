@@ -6,3 +6,5 @@ alembic~=1.8.1
 aiosqlite~=0.17.0
 marshmallow~=3.17.0
 aiohttp_apispec~=2.2.3
+ujson~=5.4.0
+uvicorn~=0.18.2

@@ -1,6 +1,6 @@
 from sqlalchemy import (
     Column, Integer, Boolean,
-    MetaData, String, Table,
+    MetaData, String, Table, Text,
 )
 
 
@@ -27,5 +27,6 @@ users_table = Table(
     Column('username', String(128)),
     Column('language_code', String(8)),
     Column('is_admin', Boolean),
-    Column('api_token', String(32))
+    Column('api_token', String(32)),
+    Column('description', Text, nullable=True)
 )

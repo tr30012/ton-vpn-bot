@@ -1,2 +1,0 @@
-# ton-vpn-bot
- 

@@ -4,3 +4,4 @@ pgdata
 build
 dist
 vpnbot.egg-info
+__pycache__

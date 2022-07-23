@@ -40,7 +40,7 @@ sdist: clean
 
 
 docker-build: sdist
-	docker build -t $(PROJECT_NAME):$(VERSION) .
+	docker build --target=api -t $(PROJECT_NAME):$(VERSION) .
 
 
 docker-run:

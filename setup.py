@@ -1,4 +1,5 @@
 import os
+import sys
 from importlib.machinery import SourceFileLoader
 
 from pkg_resources import parse_requirements
@@ -20,6 +21,13 @@ def load_requirements(fname: str) -> list:
                 '{}{}{}'.format(req.name, extras, req.specifier)
             )
     return requirements
+
+
+if sys.platform != 'win32':
+    requirements_txt = 'requirements-fast.txt'
+
+else:
+    requirements_txt = 'requirements.txt'
 
 
 setup(

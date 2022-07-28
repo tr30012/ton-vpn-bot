@@ -10,6 +10,7 @@ PG_PASSWORD ?= hackme
 
 
 all:
+	@echo "make token           - Show bot token"
 	@echo "make clean		    - Remove dist info"
 	@echo "make postgres		- Start postgres container"
 	@echo "make docker-build    - Build vpnbot docker image"

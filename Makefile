@@ -17,6 +17,7 @@ all:
 	@echo "make install         - Install package locally"
 	@echo "make sdist		    - Make source distribution"
 	@echo "make build           - Build package in the same dir"
+	@echo "make devenv          - Creates python dev environment"
 	@exit 0
 
 
@@ -34,6 +35,9 @@ postgres:
 		-v ./pgdata:/var/lib/postgresql/data \
 		--publish 5432:5432 postgres
 
+devenv: clean
+	rm -rf env
+	python -m venv env
 
 sdist: clean
 	python setup.py sdist
@@ -44,8 +48,8 @@ docker-build: sdist
 
 
 docker-run:
-	docker stop vpnbot || true
-	docker run --rm --detach --name=vpnbot \
+	docker stop $(PROJECT_NAME) || true
+	docker run --rm --detach --name=$(PROJECT_NAME) \
 		--env POSTGRES_HOST=$(PG_HOST) \
 		--env POSTGRES_PORT=$(PG_PORT) \
 		--env POSTGRES_USER=$(PG_USER) \

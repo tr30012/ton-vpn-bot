@@ -1,1 +1,3 @@
 include requirements*.txt
+include vpnbot/alembic.ini
+include vpnbot/orm/alembic/script.py.mako

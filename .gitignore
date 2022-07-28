@@ -5,3 +5,5 @@ build
 dist
 vpnbot.egg-info
 __pycache__
+token.py
+token.py

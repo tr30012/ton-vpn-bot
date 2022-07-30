@@ -1,10 +1,10 @@
 from sqlalchemy import insert, exists, select, update
 from sqlalchemy.sql import Update, Select, Insert
 
-from vpnbot.orm.schemas import users_table
+from .schemas import users_table
 from aiogram.types import User
 
-from vpnbot.orm.tokens import create_token
+from .tokens import create_token
 
 
 def insert_user_query(user: User) -> Insert:

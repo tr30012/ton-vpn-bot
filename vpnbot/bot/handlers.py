@@ -1,16 +1,16 @@
 from aiogram import Dispatcher, Bot
 from aiogram import types
 
-from vpnbot.bot.locales import lu, ll
-from vpnbot.bot.locales import START, SETTINGS, LANGUAGE
-from vpnbot.bot.keyboards import MainMenuKeyboard, SettingsMenuKeyboard, ChangeLanguageMenuKeyboard
+from .locales import lu, ll
+from .locales import START, SETTINGS, LANGUAGE
+from .keyboards import MainMenuKeyboard, SettingsMenuKeyboard, ChangeLanguageMenuKeyboard
 from vpnbot.orm.pool import db_first_message
 
 
 def _lazy_load(bot: Bot, dp: Dispatcher):
     @dp.message_handler(commands=["start"])
     async def process_start_cmd(message: types.Message):
-        await db_first_message(bot['pool'], message)
+        await db_first_message(bot['engine'], message)
         await bot.send_message(message.chat.id, ll(message.chat.id, START),
                                reply_markup=MainMenuKeyboard(message.chat.id)
                                )

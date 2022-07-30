@@ -1,4 +1,4 @@
-from vpnbot.bot.locales import *
+from .locales import *
 from aiogram.types import InlineKeyboardMarkup, InlineKeyboardButton, CallbackQuery
 
 

@@ -1,7 +1,7 @@
 import logging
 
 from aiogram import Bot, Dispatcher
-from vpnbot.bot.handlers import _lazy_load
+from .handlers import _lazy_load
 
 
 def create_dispatcher(token: str) -> (Bot, Dispatcher):

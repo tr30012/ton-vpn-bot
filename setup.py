@@ -54,8 +54,7 @@ setup(
     install_requires=load_requirements('requirements.txt'),
     entry_points={
         'console_scripts': [
-            '{0}-api = {0}.api.__main__:main'.format(module_name),
-            '{0}-bot = {0}.bot.__main__:main'.format(module_name),
+            '{0}-bot = {0}.__main__:main'.format(module_name),
             '{0}-orm = {0}.orm.__main__:main'.format(module_name)
         ]
     },

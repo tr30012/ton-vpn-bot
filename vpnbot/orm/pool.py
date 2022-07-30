@@ -2,6 +2,8 @@ import asyncio
 import logging
 
 from collections import AsyncIterable
+from functools import cache
+
 from aiogram import types
 
 from sqlalchemy import select
@@ -9,7 +11,7 @@ from sqlalchemy.pool import QueuePool
 from sqlalchemy.sql import Select
 from sqlalchemy.ext.asyncio import create_async_engine, AsyncEngine, AsyncConnection
 
-from vpnbot.orm.queries import does_user_exists_query, insert_user_query
+from .queries import does_user_exists_query, insert_user_query
 from vpnbot.utils.orm import get_database_uri, get_database_pool_size, get_database_pool_max_overflow
 
 
@@ -28,7 +30,8 @@ class AsyncExecute(AsyncIterable):
             yield self.cls_(row)
 
 
-def setup_async_pool() -> AsyncEngine:
+@cache
+def setup_async_engine() -> AsyncEngine:
     logging.info("Creating connection pool.")
 
     engine: AsyncEngine = create_async_engine(

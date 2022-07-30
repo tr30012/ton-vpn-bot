@@ -23,6 +23,7 @@ all:
 	@echo "make sdist		    - Make source distribution"
 	@echo "make build           - Build package in the same dir"
 	@echo "make devenv          - Creates python dev environment"
+	@echo "make run             - Installs package and runs it locally"
 	@exit 0
 
 token:
@@ -59,7 +60,7 @@ docker-build:
 
 docker-run:
 	docker stop $(PROJECT_NAME) || true
-	docker run --rm --name=$(PROJECT_NAME) \
+	docker run --rm --detach --name=$(PROJECT_NAME) \
 		--env POSTGRES_HOST=$(PG_HOST) \
 		--env POSTGRES_PORT=$(PG_PORT) \
 		--env POSTGRES_USER=$(PG_USER) \
@@ -78,3 +79,6 @@ install:
 
 build:
 	python setup.py build
+
+run: install
+	vpnbot-bot $(TOKEN)
